@@ -18,9 +18,10 @@ def hbnb_hbnb():
 
 
 @app.route('/c/<text>')
-def text(text):
+def var(text):
     """C"""
-    return "C {}".format(text).replace("_", " ")
+    tex = text.replace('_', ' ')
+    return "C {}".format(tex)
 
 
 @app.route('/python', strict_slashes=False)
@@ -34,7 +35,7 @@ def python_text(text='is cool'):
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     """Number"""
-    return '{} is a number'.format(n)
+    return "{} is a number".format(n)
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
