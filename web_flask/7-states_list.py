@@ -6,17 +6,17 @@ from models import storage
 app = Flask(__name__)
 
 
+@app.teardown_appcontext
+def close(self):
+    """ clse the session """
+    storage.close()
+
+
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """Display States"""
     states = storage.all('State')
     return render_template('7-states_list.html', states=states)
-
-
-@app.teardown_appcontext
-def teardown_db(self):
-    """Remove the current SQLAlchemy Session"""
-    storage.close()
 
 
 if __name__ == '__main__':
