@@ -3,6 +3,8 @@
 
 from flask import Flask, render_template
 from models import storage
+from models.state import State
+
 app = Flask(__name__)
 
 
@@ -15,7 +17,7 @@ def close(self):
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """Display States"""
-    states = storage.all('State')
+    states = storage.all(State)
     return render_template('7-states_list.html', states=states)
 
 
